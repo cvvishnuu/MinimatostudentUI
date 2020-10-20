@@ -1,0 +1,7 @@
+.dashboard-container {
+    background-image: url("./homepage.jpg");
+    background-size: cover;
+    border: 1px solid black;
+    height: 600px;
+    width: 100vw;
+}

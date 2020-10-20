@@ -1,0 +1,51 @@
+.container-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .searchbar-container {
+    display: flex;
+    justify-content: center;
+    width: 50vw;
+}
+
+.searchbar {
+    border-color: crimson;
+    border-radius: 7px;
+    width: 50vw;
+    padding: 12px;
+}
+
+.searchbar:focus {
+    outline: none;
+    border-color: blue;   
+}
+
+.title{
+    font-family: 'Lemonada', cursive;
+    color: white;
+    margin-bottom: 1.6vh;
+    font-size: 60px;
+}
+
+.slogan {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: white;
+    margin: 1.6vh 0px 5vh 0px;
+}
+
+@media only screen and (max-width: 768px) {
+    .title {
+        font-size: small;
+    }
+
+    .slogan {
+        font-size: small;
+    }
+
+    .searchbar {
+        padding: 5px;
+        width: 70vw;
+    }
+}

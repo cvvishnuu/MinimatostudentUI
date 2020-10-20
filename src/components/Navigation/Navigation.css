@@ -1,0 +1,14 @@
+
+.navigation-container {
+    /* margin-bottom: 20vh; */
+    margin: 3vh 7vw 12vh;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.navbar-toggler {
+    background-color: #0e0d0d7a;
+    border: 1px solid #7c333300;
+}
