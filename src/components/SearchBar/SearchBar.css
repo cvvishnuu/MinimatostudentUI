@@ -11,28 +11,36 @@
 }
 
 .searchbar {
-    border-color: crimson;
+    border-color: rgb(128, 110, 114);
     border-radius: 7px;
-    width: 50vw;
+    width: 40vw;
     padding: 12px;
+    opacity: 0.5;
+}
+
+::placeholder {
+    opacity: 1;
+    color:black;
 }
 
 .searchbar:focus {
     outline: none;
-    border-color: blue;   
+    background-color: rgb(160, 160, 160);   
 }
 
 .title{
     font-family: 'Lemonada', cursive;
     color: white;
-    margin-bottom: 1.6vh;
+    margin-bottom: 0;
     font-size: 60px;
+    opacity: 0.8;
 }
 
 .slogan {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: white;
-    margin: 1.6vh 0px 5vh 0px;
+    margin: 1.6vh 0px 2vh 0px;
+    opacity: 0.7;
 }
 
 @media only screen and (max-width: 768px) {

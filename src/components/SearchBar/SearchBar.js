@@ -7,10 +7,12 @@ const SearchBar = () => {
             <h1 className = "title">MINIMATO</h1>
             <h2 className = "slogan">Discover the best foods and drinks in your college</h2>
             <div className = "searchbar-container">
-                <input className = "searchbar" type = "text" placeholder = "Search..." />
+                <input style = {{marginBottom: "4vh"}} className = "searchbar" type = "text" placeholder = "   Search..." />
             </div>
         </div>
     )
 }
 
 export default SearchBar;
+
+
