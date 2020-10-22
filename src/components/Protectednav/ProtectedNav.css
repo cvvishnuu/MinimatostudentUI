@@ -1,0 +1,13 @@
+
+.authNav-container {
+    margin: 3vh 9.5vw 6vh 7vw;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+#basic-nav-dropdown{
+    color: white;
+    font-size: x-large;
+}

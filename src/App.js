@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
-import Dashboard from './components/Dashboard/Dashboard';
-  
+import Rout from './routers.js'  
 
 function App() {
   return (
-    <Dashboard />
+    <Rout/>
   );
 }
 

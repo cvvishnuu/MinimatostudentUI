@@ -25,7 +25,8 @@
 
 .searchbar:focus {
     outline: none;
-    background-color: rgb(160, 160, 160);   
+    background-color: rgb(160, 160, 160);
+    color: black;   
 }
 
 .title{

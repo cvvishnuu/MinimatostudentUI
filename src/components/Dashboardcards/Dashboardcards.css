@@ -1,0 +1,28 @@
+.card-deck {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 10vh;
+    height: 26vh;
+    width: 70vw;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card {
+    border-radius: 20px !important;
+}
+
+.card-img-top{
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+
+.hover {
+    transition: 0.3s;
+}
+
+.hover:hover {
+    transform: scale(1.05, 1.05);
+}

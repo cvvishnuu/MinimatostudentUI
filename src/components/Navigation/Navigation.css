@@ -13,3 +13,31 @@
     border: 1px solid #7c333300;
 }
 
+.customModal {
+    width: 30vw;
+    height: 40vh;
+    border-radius: 5px;
+}
+
+.customModalSignup {
+    width: 30vw;
+    height: 75vh;
+    border-radius: 5px;
+}
+
+@keyframes customEnterAnimation {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes customLeaveAnimation {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
