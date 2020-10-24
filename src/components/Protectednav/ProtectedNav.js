@@ -21,17 +21,13 @@ const ProtectedNav = (props) => {
                 <Nav>
                     <NavDropdown  title = {`Hi ${name}`}  id="basic-nav-dropdown">
                         <NavDropdown.Item as = {Link} to='/protected/viewprofile'>
-                            
                                 View Profile
-                            
                         </NavDropdown.Item>
-                        <NavDropdown.Item >
+                        <NavDropdown.Item>
                             Order Summary
                         </NavDropdown.Item>
                         <NavDropdown.Item as = {Link} to='/' onClick = {onLogout}>
-                            
                                 Logout
-                            
                         </NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
