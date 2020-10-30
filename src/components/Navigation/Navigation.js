@@ -70,6 +70,7 @@ class Naviagtion extends Component {
                         modal: {
                             animation: `${ signup ? 'customEnterAnimation' : 'customLeaveAnimation'
                             } 500ms`,
+                            height: "75vh"
                         }}}
                         classNames={{
                             modal: 'customModalSignup'

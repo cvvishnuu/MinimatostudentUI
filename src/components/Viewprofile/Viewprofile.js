@@ -1,113 +1,124 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import ProtectedNav from '../Protectednav/ProtectedNav';
-import SearchBar from '../SearchBar/SearchBar';
+import React, { useState } from 'react';
+// import ProtectedNav from '../Protectednav/ProtectedNav';
+// import SearchBar from '../SearchBar/SearchBar';
+import ProfileHeader from './Header';
 import Button from 'react-bootstrap/Button';
 import { Modal }  from "react-responsive-modal";
 import EditProfile from '../EditProfile/EditProfile';
+import FooterPagePro from '../Footer/Footer';
 import './ViewProfile.css';
 
-class Viewprofile extends Component {
-    constructor() {
-        super();
-        this.state = {
-            user: {
-                id: '',
-                name: '',
-                email: '',
-                phoneNumber: '',
-                address: '',
-                gender: ''
-            },
-            open: false
-        }
-    }
 
-    componentDidMount() {
-        const token = JSON.parse(localStorage.getItem('Authorization'))
-        axios.get('http://localhost:5000/student/viewprofile', {
-            headers : {
-                Authorization: token
-            }, 
-        })
-        .then(res => {
-            console.log(res);
-            if(res.data.success) {
-                this.setState({
-                    user: {
-                        id: res.data.payload.id,
-                        name: res.data.payload.name,
-                        email: res.data.payload.email,
-                        phoneNumber: res.data.payload.phone_no,
-                        address: res.data.payload.address,
-                        gender: res.data.payload.gender
-                    }
-                })
-            } else {
-                alert("There has been an error. Kindly try again later");
-            }
-        })
-        .catch(err => {
-            alert("The server down. Kindly try again later")
-        })
-    }
-
-    onCloseModal = () => {
-        this.setState({ open: false })
-    }
-
-    onOpenModal = () => {
-        this.setState({
-            open: true
-        })
-    }
-
-    render() {
-        const { open } = this.state;
-        const { name, gender, phoneNumber, email, address } = this.state.user;
-        return ( 
-            <div>
-                <div className = "dashboard-container">
-                    <ProtectedNav name = {this.state.user.name} />
-                    <SearchBar /> 
-                </div>
-                {/* Here the profile pic and background-image component will be loaded and users name and image will be 
-                        passed as props to the component  */}
-                <h3>Personal Details</h3>
-                <div>
-                    <label>Full Name</label>
-                    <input placeholder = {`${this.state.user.name}`} disabled/>
-                </div>
-                <div>
-                    <label>Phone Number</label>
-                    <input placeholder = {`${this.state.user.phoneNumber}`} disabled/>
-                </div>
-                <div>
-                    <label>Gender</label>
-                    <input placeholder = {`${this.state.user.gender}`} disabled/>
-                </div>
-                <div>
-                    <label>Address</label>
-                    <input placeholder = {`${this.state.user.address}`} disabled/>
-                </div>
-                <Button onClick={this.onOpenModal} variant="danger" >
-                    Edit
-                </Button>
-                <Modal open = {open} onClose = {this.onCloseModal} center
-                        styles={{
-                        modal: {
-                            animation: `${ open ? 'customEnterAnimation' : 'customLeaveAnimation'
-                            } 500ms`,
-                        }}}
-                        classNames={{
-                            modal: 'customModalSignup'
+const Viewprofile = () => {
+    const [open, setOpen] = useState(false);
+    const userInfo = JSON.parse(localStorage.getItem('User'));
+    const { name, email, phoneNumber, address, gender } = userInfo;
+    return ( 
+        <div className = "viewprofile-container">
+            <div >
+                {/* <ProtectedNav name = {name} />
+                <SearchBar />  */}
+                <ProfileHeader />
+            </div>
+            {/* background image for the user  */}
+            <div style = {{display:"flex",justifyContent:"center"}}>
+                <div  style = {{width:"1150px"}} className="background-picture">
+                    <h3 style = {{
+                            textAlign: "start", 
+                            display: "flex", 
+                            height: "300px", 
+                            marginLeft: "90px", 
+                            color: "white", 
+                            flexDirection: "column", 
+                            alignContent: "center", 
+                            justifyContent: "center"
                         }}
                     >
-                        <EditProfile name = {name} email = {email} phoneNo = {phoneNumber} gender = {gender} address = {address} />
-                </Modal>
+                        {`${name}`}
+                    </h3>
+                    
+                </div>
+
             </div>
-         );
-    }     
+            {/* Here the profile pic and background-image component will be loaded and users name and image will be 
+                    passed as props to the component  */}
+            <div className = "display-container">
+                <div className = "display-details-cont">
+                    <h3>Personal Details</h3>
+                    <div className = "input-space">
+                        <label style = {{marginRight: "61px"}}>Full Name</label>
+                        <input 
+                            style = {{borderStyle:"none",textAlign:"center",borderRadius:"5px"}} 
+                            className = "input-field" 
+                            placeholder = {`${name}`} 
+                            disabled
+                        />
+                    </div>
+                    <div className = "input-space">
+                        <label style={{marginRight:"94px"}}>Email</label>
+                        <input  
+                            style = {{borderStyle:"none",textAlign:"center",borderRadius:"5px"}} 
+                            placeholder = {`${email}`} 
+                            className = "input-field" 
+                            disabled
+                        />
+                    </div>
+                    <div className = "input-space">
+                        <label style={{marginRight:"24px"}}>Phone Number</label>
+                        <input 
+                            style = {{borderStyle:"none",textAlign:"center",borderRadius:"5px"}} 
+                            placeholder = {`${phoneNumber}`} 
+                            className = "input-field" 
+                            disabled
+                        />
+                    </div>
+                    <div className = "input-space">
+                        <label style={{marginRight:"78px"}}>Gender</label>
+                        <input 
+                            style = {{borderStyle:"none",textAlign:"center",borderRadius:"5px"}} 
+                            placeholder = {`${gender}`} 
+                            className = "input-field" 
+                            disabled
+                         />
+                    </div>
+                    <div className = "input-space">
+                        <label style={{marginRight:"72px"}}>Address</label>
+                        <div>
+                            <textarea 
+                                style = {{marginTop: "2vh", verticalAlign: "text-top", color: "black",borderStyle:"none",borderRadius:"5px"}} 
+                                placeholder = {`${address}`} 
+                                className = "address-field" 
+                                value = {`${address}`}
+                                disabled
+                            >
+                            </textarea>
+                        </div>
+                    </div>
+                    <Button 
+                        className = "input-space" 
+                        style = {{padding: "5px 30px"}} 
+                        onClick={() => setOpen(!open)} 
+                        variant="danger" 
+                    >
+                        Edit
+                    </Button>
+                </div>
+            </div>
+            <Modal open = {open} onClose = {() => setOpen(!open)} center
+                    styles={{
+                    modal: {
+                        animation: `${ open ? 'customEnterAnimation' : 'customLeaveAnimation'
+                        } 500ms`,
+                    }}}
+                    classNames={{
+                        modal: 'customModalViewProfile'
+                    }}
+                >
+                    <EditProfile />
+            </Modal>
+            <FooterPagePro />
+        </div>
+    );    
 }
  
 export default Viewprofile;

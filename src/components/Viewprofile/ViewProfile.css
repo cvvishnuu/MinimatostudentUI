@@ -1,5 +1,57 @@
-.customModalSignup {
+
+
+
+.customModalViewProfile {
     width: 30vw;
     height: 65vh;
     border-radius: 5px;
+}
+
+
+
+.display-container {
+    display:flex;
+    justify-content:left;
+    margin-left: 200px;
+}
+
+
+.display-details-cont {
+    margin-top: 5vh;
+    margin-bottom: 9vh;
+    padding:30px 50px;
+    border-radius: 5px;
+}
+
+.background-picture{
+    background-image: url('./profile.png');
+    background-repeat: no-repeat;
+    /* background-color:red; */
+    height: 300px;
+    background-size: 1150px 300px;
+    box-shadow: inset  10px -10px 25px rgba(0,0,0,0.6);
+    background-position:center ;
+    border-radius: 10px;
+    
+}
+
+.input-field {
+    padding: 5px;
+    background-color: rgba(93,96,89,0.1);
+    
+}
+
+.address-field {
+    padding: 5px;
+    width: 400px;
+    height: 100px;
+    background-color: rgba(93,96,89,0.1)
+}
+
+h3{
+    text-align: center;
+}
+
+.input-space {
+    margin :3vh;
 }

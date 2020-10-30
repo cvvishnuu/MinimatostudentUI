@@ -7,6 +7,10 @@
     justify-content: flex-end;
 }
 
+.protectednav-title {
+    font-family: 'Montserrat', sans-serif;
+}
+
 #basic-nav-dropdown{
     color: white;
     font-size: x-large;

@@ -204,7 +204,7 @@ class Signup extends Component {
                     <Form.Control onChange={this.onConfirmPassword} type="password" placeholder="confirm Password" />
                 </Form.Group>
                 <Button onClick={this.onSubmit} variant="danger" type="submit">
-                    Submit
+                    Signup
                 </Button>
             </Form>
         )

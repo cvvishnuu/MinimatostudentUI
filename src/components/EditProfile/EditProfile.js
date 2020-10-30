@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Axios from 'axios';
 
 class EditProfile extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             name: '',
             email: '',
@@ -48,29 +48,59 @@ class EditProfile extends Component {
     onUpdate = (event) => {
         event.preventDefault();
         const { name, email, phoneNumber, gender, address } = this.state;
+        const userInfo = JSON.parse(localStorage.getItem('User'));
+        const { id } = userInfo;
+        const token = JSON.parse(localStorage.getItem('Authorization'))
         try {
-            if(name === '' && email === '' && phoneNumber === '' && gender === '' && address === '') {
-                alert("All the input fields are empty. Please fill atleast one to edit your details");
+            if(name === '' || email === '' || phoneNumber === '' || gender === '' || address === '') {
+                alert("Please fill in all the fields.");
             } else {
-                Axios.put('http://localhost:5000/')
+                Axios.put('http://localhost:5000/student/editprofile', {
+                    id: id,
+                    name: name,
+                    email: email,
+                    phoneNo: phoneNumber,
+                    gender: gender,
+                    address: address
+                }, 
+                {
+                    headers : {
+                        Authorization: token
+                    }
+                }).then(res => {
+                    if(res.data.success) {
+                        localStorage.setItem("User", JSON.stringify({
+                            id: res.data.payload.id,
+                            name: res.data.payload.name,
+                            email: res.data.payload.email,
+                            phoneNumber: res.data.payload.phone_no,
+                            address: res.data.payload.address,
+                            gender: res.data.payload.gender
+                        })) 
+                    } else {
+                        alert("The server has crashed. Please try again later");
+                    }
+                    
+                })
             }
         } catch (error) {
-            
+            alert("There has been an erro, please try again later");
         }
     }
 
     render() {
-        const {name, email, phoneNo, address } = this.props;
+        const userInfo = JSON.parse(localStorage.getItem('User'));
+        const { name, email, phoneNumber, address } = userInfo;
         return(
             <Form>
                 <h3 style = {{textAlign: "center"}} >Edit Profile Information</h3>
                 <Form.Group >
                     <Form.Label>Full Name</Form.Label>
-                    <Form.Control type="text"  onChange = {this.onNameChange} placeholder = {name} />
+                    <Form.Control type="text"  onChange = {this.onNameChange} placeholder = {`${name}`} />
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" onChange={this.onEmailChange} placeholder = {email} />
                     <Form.Label>Phone Number</Form.Label>
-                    <Form.Control onChange={this.onPhoneNumberChange} type="tel" placeholder = {phoneNo} />
+                    <Form.Control onChange={this.onPhoneNumberChange} type="tel" placeholder = {phoneNumber} />
                     <Form.Label>Gender</Form.Label>
                         <Form.Group>
                             <Form.Check
