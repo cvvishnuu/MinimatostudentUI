@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
+import Search from '../Search/Search';
 require('./header.css');
 
 const onLogout = () => {
@@ -16,6 +17,7 @@ const ProfileHeader = () => {
           <div className = "header-container"  >
               <Navbar expand="sm ">
                   <Navbar.Brand className = "minimato-title" style={{color: "black", fontSize: "30px"}}>MiniMato</Navbar.Brand>
+                  <Search />
                   <Navbar.Toggle aria-controls="basic-navbar-nav" /> 
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
@@ -36,6 +38,7 @@ const ProfileHeader = () => {
                     </Nav>
                   </Navbar.Collapse>
                </Navbar> 
+               <hr/>
           </div>
       );   
 }

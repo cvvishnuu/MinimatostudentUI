@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-// import ProtectedNav from '../Protectednav/ProtectedNav';
-// import SearchBar from '../SearchBar/SearchBar';
-import ProfileHeader from './Header';
 import Button from 'react-bootstrap/Button';
 import { Modal }  from "react-responsive-modal";
 import EditProfile from '../EditProfile/EditProfile';
+import ProfileHeader from '../Header/Header';
 import FooterPagePro from '../Footer/Footer';
 import './ViewProfile.css';
 
@@ -16,8 +14,6 @@ const Viewprofile = () => {
     return ( 
         <div className = "viewprofile-container">
             <div >
-                {/* <ProtectedNav name = {name} />
-                <SearchBar />  */}
                 <ProfileHeader />
             </div>
             {/* background image for the user  */}
@@ -26,7 +22,7 @@ const Viewprofile = () => {
                     <h3 style = {{
                             textAlign: "start", 
                             display: "flex", 
-                            height: "300px", 
+                            height: "200px", 
                             marginLeft: "90px", 
                             color: "white", 
                             flexDirection: "column", 
@@ -35,13 +31,9 @@ const Viewprofile = () => {
                         }}
                     >
                         {`${name}`}
-                    </h3>
-                    
+                    </h3>  
                 </div>
-
             </div>
-            {/* Here the profile pic and background-image component will be loaded and users name and image will be 
-                    passed as props to the component  */}
             <div className = "display-container">
                 <div className = "display-details-cont">
                     <h3>Personal Details</h3>
