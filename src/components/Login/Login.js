@@ -92,7 +92,7 @@ class Login extends Component {
             //     </form>
             // </div>  
             <Form>
-                <h2 style = {{textAlign: "center"}} >Login</h2>
+                <h2 style = {{textAlign: "center"}} id = "login-logo">Login</h2>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" onChange={this.onEmailchange} placeholder="Enter email" />

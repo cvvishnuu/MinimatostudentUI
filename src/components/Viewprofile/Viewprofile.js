@@ -108,6 +108,44 @@ const Viewprofile = () => {
                 >
                     <EditProfile />
             </Modal>
+            <div className = "form-wrap">
+                <div className = "profile">
+                    <img src="https://html5book.ru/wp-content/uploads/2016/10/profile-image.png" alt ="uma"/>
+                    <h1>Регистрация</h1>
+                </div>
+                <form>
+                    <div>
+                        <label for="name">Имя</label>
+                        <input type="text" name="name" required/>
+                    </div>
+                    <div className = "radio">
+                        <span>Пол</span>
+                        <label>
+                            <input type="radio" name="sex" value="мужской"/>мужской
+                            <div className = "radio-control male"></div>
+                        </label>
+                        <label>
+                            <input type="radio" name="sex" value="женский"/>женский
+                            <div className = "radio-control female"></div>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" required/>
+                    </div>
+                    <div>
+                        <label for="country">Страна</label>
+                        <select name="country">
+                            <option>Выберите страну проживания</option>
+                            <option value="Россия">Россия</option> 
+                            <option value="Украина">Украина</option> 
+                            <option value="Беларусь">Беларусь</option> 
+                        </select> 
+                        <div className = "select-arrow"></div> 
+                    </div> 
+                    <button type="submit">Отправить</button> 
+                </form> 
+            </div>
             <FooterPagePro />
         </div>
     );    

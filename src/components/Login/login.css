@@ -1,0 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Lily+Script+One);
+
+#login-logo {
+    font-family:'Lily Script One', cursive;
+    color: rgb(131, 124, 124);
+    font-weight:bold;
+    -webkit-transition:0.2s ease all;
+	   -moz-transition:0.2s ease all;
+	    -ms-transition:0.2s ease all;
+	     -o-transition:0.2s ease all;
+            transition:0.2s ease all;
+    
+}
+
+#login-logo:hover {
+	color: crimson;
+}

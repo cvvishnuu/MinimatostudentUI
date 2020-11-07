@@ -171,7 +171,7 @@ class Signup extends Component {
             //     </form>
             // </div>  
             <Form>
-                <h2 style = {{textAlign: "center"}} >Signup</h2>
+                <h2 style = {{textAlign: "center"}} id = "signup-logo" >Signup</h2>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="text"  onChange = {this.onNameChange} placeholder="Enter Name" />

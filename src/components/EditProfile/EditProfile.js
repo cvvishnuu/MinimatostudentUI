@@ -92,7 +92,7 @@ class EditProfile extends Component {
         const userInfo = JSON.parse(localStorage.getItem('User'));
         const { name, email, phoneNumber, address } = userInfo;
         return(
-            <Form>
+            <Form>  
                 <h3 style = {{textAlign: "center"}} >Edit Profile Information</h3>
                 <Form.Group >
                     <Form.Label>Full Name</Form.Label>

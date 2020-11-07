@@ -18,15 +18,15 @@ const ProtectedNav = (props) => {
                 <Navbar.Brand className = "protectednav-title" style={{color: "white", fontSize: "x-large"}}>MiniMato</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" /> 
                 <Navbar.Collapse id="basic-navbar-nav">
-                <Nav>
-                    <NavDropdown  title = {`Hi ${name}`}  id="basic-nav-dropdown">
-                        <NavDropdown.Item as = {Link} to='/protected/dashboard'>
+                <Nav >
+                    <NavDropdown title = {`Hi ${name}`}  id="basic-nav-dropdown">
+                        <NavDropdown.Item  as = {Link} to='/protected/dashboard'>
                             Dashboard
                         </NavDropdown.Item>
-                        <NavDropdown.Item as = {Link} to='/protected/viewprofile'>
+                        <NavDropdown.Item  as = {Link} to='/protected/viewprofile'>
                             View Profile
                         </NavDropdown.Item>
-                        <NavDropdown.Item>
+                        <NavDropdown.Item  >
                             Order Summary
                         </NavDropdown.Item>
                         <NavDropdown.Item as = {Link} to='/' onClick = {onLogout}>

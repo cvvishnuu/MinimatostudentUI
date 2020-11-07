@@ -12,3 +12,8 @@
     margin: 2vh 9.5vw 0vh 9vw;
 }
 
+hr { 
+   margin-top: 0em !important;
+   margin-bottom: 0em !important;
+   border-color: white;
+}
