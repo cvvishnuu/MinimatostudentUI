@@ -15,6 +15,10 @@ class Login extends Component {
             isAuthenticated:false
         }
     }
+
+    componentDidMount() {
+        this.checkStore()
+    }
  
     checkStore(){
         const store =JSON.parse(localStorage.getItem('Authorization'));
@@ -39,12 +43,14 @@ class Login extends Component {
                 alert("The input fields are empty")
             } else {
                 axios.post('http://localhost:5000/student/login',{email:email,password:password},{withCredentials:true})
-                .then(res=>{
+                .then(res => {
                     if(!res.data.success){
                         this.setState({errorMessage:"Incorrect Email ot Password"})
                     } else {
                         const token = JSON.stringify(res.data.token);
+                        const id = JSON.stringify(res.data.id);
                         localStorage.setItem('Authorization',token);
+                        localStorage.setItem('id', id);
                         this.checkStore();
                     }
 

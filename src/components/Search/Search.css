@@ -10,12 +10,12 @@
     padding: 2vh;
     border-radius: 10px;
     border: 1px solid darkgrey;
-    background-color: rgba(white, white, white, 0.5);
+    background-color: rgba(160, 160, 160,0.2);
 }
 
 .hinput-container:focus {
     outline: none;
-    background-color: rgba(160, 160, 160,0.2);
+    background-color: white;
     color: black;   
 }
 

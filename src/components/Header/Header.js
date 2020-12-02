@@ -10,9 +10,11 @@ const onLogout = () => {
      localStorage.clear()
  }
 
-const ProfileHeader = () => {
+const Header = () => {
      const userInfo = JSON.parse(localStorage.getItem('User'));
-    const { name } = userInfo;
+     const imageInfo = JSON.parse(localStorage.getItem('Image'));
+     const { name } = userInfo;
+     // const { b64, mimeType } = imageInfo;
      return (
           <div className = "header-container"  >
               <Navbar expand="sm ">
@@ -21,20 +23,45 @@ const ProfileHeader = () => {
                   <Navbar.Toggle aria-controls="basic-navbar-nav" /> 
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
-                         <NavDropdown title = {`Hi ${name}`} id="basic-nav-dropdownn">
-                              <NavDropdown.Item as = {Link} to='/protected/dashboard'>
-                                   Dashboard
-                              </NavDropdown.Item>
-                              <NavDropdown.Item as = {Link} to='/protected/viewprofile'>
-                                   View Profile
-                              </NavDropdown.Item>
-                              <NavDropdown.Item>
-                                   Order Summary
-                              </NavDropdown.Item>
-                              <NavDropdown.Item as = {Link} to='/' onClick = {onLogout}>
-                                   Logout
-                              </NavDropdown.Item>
-                         </NavDropdown>
+                         {
+                              (imageInfo)?
+                              <NavDropdown 
+                                   title = {<img 
+                                        src = {`data:${imageInfo.mimeType};base64,${imageInfo.b64}`} 
+                                        style = {{
+                                             borderRadius: "50%", 
+                                             height: "50px",
+                                             width: "50px"
+                                        }} />}                                    
+                              >
+                                   <NavDropdown.Item as = {Link} to='/protected/dashboard'>
+                                        Dashboard
+                                   </NavDropdown.Item>
+                                   <NavDropdown.Item as = {Link} to='/protected/viewprofile'>
+                                        View Profile
+                                   </NavDropdown.Item>
+                                   <NavDropdown.Item>
+                                        Order Summary
+                                   </NavDropdown.Item>
+                                   <NavDropdown.Item as = {Link} to='/' onClick = {onLogout}>
+                                        Logout
+                                   </NavDropdown.Item>
+                              </NavDropdown> :
+                              <NavDropdown title = {`Hi ${name}`} id="basic-nav-dropdownn">
+                                   <NavDropdown.Item as = {Link} to='/protected/dashboard'>
+                                        Dashboard
+                                   </NavDropdown.Item>
+                                   <NavDropdown.Item as = {Link} to='/protected/viewprofile'>
+                                        View Profile
+                                   </NavDropdown.Item>
+                                   <NavDropdown.Item>
+                                        Order Summary
+                                   </NavDropdown.Item>
+                                   <NavDropdown.Item as = {Link} to='/' onClick = {onLogout}>
+                                        Logout
+                                   </NavDropdown.Item>
+                              </NavDropdown>
+                         }                         
                     </Nav>
                   </Navbar.Collapse>
                </Navbar> 
@@ -43,4 +70,4 @@ const ProfileHeader = () => {
       );   
 }
  
-export default ProfileHeader;
+export default Header;

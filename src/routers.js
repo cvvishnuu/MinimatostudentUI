@@ -10,13 +10,12 @@ const Rout = () => {
         <Router>
             <div>
                 <Switch>
-                    <Route exact path ="/">
+                    <Route exact path = "/">
                         <Dashboard/>
                     </Route>
-                    <Route exact path = '/protected/dashboard' render={()=> localStorage.getItem('Authorization')? <AuthenticatedDashboard />: <Redirect to = '/'/>}/>
-                    <Route exact path = '/protected/viewprofile' render={()=> localStorage.getItem('Authorization')? <Viewprofile />: <Redirect to = '/'/>}/>
+                    <Route exact path = '/protected/dashboard' render={() => localStorage.getItem('Authorization')? <AuthenticatedDashboard />: <Redirect to = '/'/>}/>
+                    <Route exact path = '/protected/viewprofile' render={() => localStorage.getItem('Authorization')? <Viewprofile />: <Redirect to = '/'/>}/>
                 </Switch>
-
             </div>
         </Router>
     );

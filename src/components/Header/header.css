@@ -5,7 +5,7 @@
 }
 
 .minimato-title {
-    font-family: 'Lemonada', cursive;
+    font-family: 'Lemonada', cursive !important;
 }
 
 .header-container {

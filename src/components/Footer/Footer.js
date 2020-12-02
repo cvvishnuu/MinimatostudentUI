@@ -1,4 +1,6 @@
 import React from "react";
+import { InstagramOutlined, GithubOutlined, YoutubeFilled, LinkedinFilled } from '@ant-design/icons';
+import './Footer.css';
 
 
 const FooterPagePro = () => {
@@ -67,25 +69,25 @@ const FooterPagePro = () => {
               </div>
               <div className = "col-md-5 col-lg-4 ml-lg-0">
                 <div className = "text-center text-md-right">
-                  <ul className = "list-unstyled list-inline">
+                  <ul className = "list-unstyled list-inline">                  
                     <li className = "list-inline-item">
-                      <a href = "#!" className = "btn-floating btn-sm rgba-white-slight mx-1">
-                        <i className = "fab fa-facebook-f"></i>
+                      <a href = "https://www.instagram.com/vishnuu_venuu/" target="_blank" rel="noopener noreferrer" className = "btn-floating btn-sm rgba-white-slight mx-1">
+                        <InstagramOutlined />
                       </a>
                     </li>
                     <li className = "list-inline-item">
-                      <a href = "#!" className = "btn-floating btn-sm rgba-white-slight mx-1">
-                        <i className = "fab fa-twitter"></i>
+                      <a href = "https://github.com/cvvishnuu" target="_blank" rel="noopener noreferrer" className = "btn-floating btn-sm rgba-white-slight mx-1">
+                        <GithubOutlined />
                       </a>
                     </li>
                     <li className = "list-inline-item">
-                      <a href = "#!" className = "btn-floating btn-sm rgba-white-slight mx-1">
-                        <i className = "fab fa-google-plus-g"></i>
+                      <a href = "https://www.youtube.com/channel/UC68sDqHfjKq60C31dcvTySQ" target="_blank" rel="noopener noreferrer" className = "btn-floating btn-sm rgba-white-slight mx-1">
+                        <YoutubeFilled/>
                       </a>
                     </li>
                     <li className = "list-inline-item">
-                      <a href = "#!" className = "btn-floating btn-sm rgba-white-slight mx-1">
-                        <i className = "fab fa-linkedin-in"></i>
+                      <a href = "https://www.linkedin.com/in/vishnuu-c-v-3ab5a31a7/" target="_blank" rel="noopener noreferrer" className = "btn-floating btn-sm rgba-white-slight mx-1">
+                        <LinkedinFilled />
                       </a>
                     </li>
                   </ul>
@@ -93,6 +95,7 @@ const FooterPagePro = () => {
               </div>
             </div>
           </div>
+          
         </footer>
     );
 }

@@ -6,6 +6,7 @@ import axios from 'axios';
 import FooterPagePro from '../Footer/Footer';
 
 
+
 class AuthenticatedDashboard extends Component {
     constructor() {
         super()
@@ -15,7 +16,9 @@ class AuthenticatedDashboard extends Component {
             email: '',
             phoneNumber: '',
             address: '',
-            gender: ''
+            gender: '', 
+            b64: null,
+            mimeType: null
         }
     }
 
@@ -34,7 +37,7 @@ class AuthenticatedDashboard extends Component {
                     email: res.data.payload.email,
                     phoneNumber: res.data.payload.phone_no,
                     address: res.data.payload.address,
-                    gender: res.data.payload.gender
+                    gender: res.data.payload.gender,            
                 })
                 
                 localStorage.setItem("User", JSON.stringify({
@@ -54,11 +57,31 @@ class AuthenticatedDashboard extends Component {
             alert("An error occured Please try again later");
         })
     }
+
+    // onImageLoad = (id) => {
+    //     axios.get('http://localhost:5000/student/getImage', {
+    //         headers : {
+    //             id: id
+    //         },
+    //     })
+    //     .then(res => {
+    //         // console.log(res.data.payload);
+    //         this.setState({
+    //             b64: res.data.payload.b64,
+    //             mimeType: res.data.payload.mimeType
+    //         })
+    //         localStorage.setItem("Image", JSON.stringify({
+    //             b64: res.data.payload.b64,
+    //             mimeType: res.data.payload.mimeType
+    //         }))
+    //     })
+    // }
+
     render() {
         return(
             <div>
                 <div className = "dashboard-container">
-                    <ProtectedNav name ={this.state.name} />
+                    <ProtectedNav name ={this.state.name} onImageLoad = {this.onImageLoad}/>
                     <SearchBar />
                 </div>    
                 <Dashboardcards/>

@@ -13,7 +13,7 @@
 .searchbar {
     border-color: rgb(128, 110, 114);
     border-radius: 7px;
-    background-color: rgb(160, 160, 160);
+    background-color: white;
     width: 40vw;
     padding: 12px;
     opacity: 0.5;
@@ -26,7 +26,9 @@
 
 .searchbar:focus {
     outline: none;
-    background-color: white;
+    border-color: black;
+    border-width: 2px;
+    background-color: white ;
     color: black;   
 }
 
