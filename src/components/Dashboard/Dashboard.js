@@ -3,8 +3,11 @@ import Navigation from "../Navigation/Navigation";
 import SearchBar from '../SearchBar/SearchBar';
 import "./Dashboard.css"
 import { Redirect } from 'react-router';
-import Dashboardcards from '../Dashboardcards/Dashboardcards'
+import Dashboardcards from '../Dashboardcards/Dashboardcards';
+import CanteenCards from '../CanteenCards/CanteenCards'
 import FooterPagePro from '../Footer/Footer';
+import axios from 'axios';
+
 
 
 class Dashboard extends Component {
@@ -12,10 +15,17 @@ class Dashboard extends Component {
         super();
         this.state = {  
             isAuthenticated: false,
+            canteenDetails:[],
         }
     }
     
     componentDidMount(){
+
+      axios.get('http://localhost:5000/student/getCanteenDetails')
+      .then(res=>{
+          console.log(res.data.payload)
+          this.setState({ canteenDetails:res.data.payload})
+      })
         this.checkStore();
     }
     
@@ -38,7 +48,10 @@ class Dashboard extends Component {
                     <Navigation />
                     <SearchBar />
                 </div> 
+                {/* dashboard cards */}
                 <Dashboardcards/>
+                {/* canteen cards */}                
+                <CanteenCards details = {this.state.canteenDetails}/>
                 <FooterPagePro />
             </div>
         )

@@ -1,8 +1,8 @@
 .card-deck {
     display: flex;
     flex-flow: row wrap;
-    margin-top: 6vh;
-    height: 26vh;
+    margin-top: 6vh;    
+    height: 26vh; 
     width: 70vw;
 }
 
