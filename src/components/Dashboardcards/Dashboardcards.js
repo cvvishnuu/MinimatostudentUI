@@ -5,7 +5,7 @@ import './Dashboardcards.css';
 
 const Dashboardcards = ()=> {
     return ( 
-        <CardDeck style = {{marginRight: "auto", marginLeft: "auto"}}>
+        <CardDeck style = {{marginRight: "auto", marginLeft: "auto", position: "relative", zIndex: "-1" }}>
             <Card className = "hover" style={{ width: '10rem' }}>
                 <Card.Img variant="top" src = {require("./dashboardpic1.jpg")} />
                 <Card.Body>

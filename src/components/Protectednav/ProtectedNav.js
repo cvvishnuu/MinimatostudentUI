@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -14,31 +14,20 @@ const onLogout = () => {
 
 const ProtectedNav = (props) => {
     const { name } = props;
-    const [b64, setB64] = useState();
-    const [mimeType, setMimeType] = useState();
-    // const { b64, mimeType } = imageInfo;
     const imageInfo = JSON.parse(localStorage.getItem('Image'));
 
     useEffect(() => {
-        const id = JSON.parse(localStorage.getItem('id'));
+        const token = JSON.parse(localStorage.getItem('Authorization'))
         const imageInfo = JSON.parse(localStorage.getItem('Image'));
         if(!imageInfo) {
             axios.get('http://localhost:5000/student/getImage', {
                 headers : {
-                    id: id
+                    Authorization: token
                 },
             })
-            .then(res => {
-                // console.log(res.data.payload);
-                // this.setState({
-                //     b64: res.data.payload.b64,
-                //     mimeType: res.data.payload.mimeType
-                // })
-                setB64(res.data.payload.b64);
-                setMimeType(res.data.payload.mimeType)
+            .then(res => {                        
                 localStorage.setItem("Image", JSON.stringify({
-                    b64: res.data.payload.b64,
-                    mimeType: res.data.payload.mimeType
+                    url: res.data.payload.url
                 }))
             })
         } 
@@ -53,13 +42,16 @@ const ProtectedNav = (props) => {
                     {
                         (imageInfo)?
                             <NavDropdown 
-                            title = {<img 
-                                src = {`data:${imageInfo.mimeType};base64,${imageInfo.b64}`} 
-                                style = {{
-                                        borderRadius: "50%", 
-                                        height: "50px",
-                                        width: "50px"
-                                }} />}                     
+                            title = {
+                                <img 
+                                    src = {`http://localhost:5000${imageInfo.imageUrl}`} 
+                                    style = {{
+                                            borderRadius: "50%", 
+                                            height: "50px",
+                                            width: "50px"
+                                    }}
+                                    alt = "profile"    
+                                />}                     
                         >
                             <NavDropdown.Item as = {Link} to='/protected/dashboard'>
                                 Dashboard
@@ -75,29 +67,7 @@ const ProtectedNav = (props) => {
                             </NavDropdown.Item>
                         </NavDropdown>
                     :
-                        (b64)?
-                        <NavDropdown 
-                            title = {<img 
-                                src = {`data:${mimeType};base64,${b64}`} 
-                                style = {{
-                                        borderRadius: "50%", 
-                                        height: "50px",
-                                        width: "50px"
-                                }} />}                     
-                        >
-                            <NavDropdown.Item as = {Link} to='/protected/dashboard'>
-                                Dashboard
-                            </NavDropdown.Item>
-                            <NavDropdown.Item as = {Link} to='/protected/viewprofile'>
-                                View Profile
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                Order Summary
-                            </NavDropdown.Item>
-                            <NavDropdown.Item as = {Link} to='/' onClick = {onLogout}>
-                                Logout
-                            </NavDropdown.Item>
-                        </NavDropdown> :
+                        
                         <NavDropdown title = {`Hi ${name}`} id="basic-nav-dropdown">
                             <NavDropdown.Item as = {Link} to='/protected/dashboard'>
                                 Dashboard

@@ -31,19 +31,16 @@ const Viewprofile = () => {
     // const [mimeType, setMimeType] = useState();
 
     useEffect(() => {
-        console.log(id)
+        const token = JSON.parse(localStorage.getItem('Authorization'))
         axios.get('http://localhost:5000/student/getImage', {
             headers : {
-                id: id
-            },
+                Authorization: token
+            }
         })
         .then(res => {
-            console.log(res.data.payload);
-            // setB64(res.data.payload.b64);
-            // setMimeType(res.data.payload.mimeType);
+            console.log(res.data.payload);        
             localStorage.setItem("Image", JSON.stringify({
-                b64: res.data.payload.b64,
-                mimeType: res.data.payload.mimeType
+                imageUrl: res.data.payload.url               
             }))
         })
     }, []);
@@ -63,7 +60,15 @@ const Viewprofile = () => {
         event.preventDefault();
         fd.append('picture', selectedFile, selectedFile.name);
         fd.append('id',id)                
-        axios.post('http://localhost:5000/student/uploadImage', fd)
+        axios({
+            method: 'post',
+            url: 'http://localhost:5000/student/uploadImage', 
+            data: fd,
+            headers: { 
+                'Authorization': token,
+                'Content-Type': 'multipart/form-data'
+            }
+        })
         .then(res => {
             console.log(res);
         })
@@ -101,7 +106,7 @@ const Viewprofile = () => {
                     {
                         (imageInfo)?
                         <img 
-                            src={`data:${imageInfo.mimeType};base64,${imageInfo.b64}`}
+                            src={`http://localhost:5000${imageInfo.imageUrl}`}
                             alt = "profile-pic" 
                             onClick = {profilePicHandler}       
                             id = "profileImage"                                     

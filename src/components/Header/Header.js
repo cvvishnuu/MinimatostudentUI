@@ -26,13 +26,16 @@ const Header = () => {
                          {
                               (imageInfo)?
                               <NavDropdown 
-                                   title = {<img 
-                                        src = {`data:${imageInfo.mimeType};base64,${imageInfo.b64}`} 
-                                        style = {{
-                                             borderRadius: "50%", 
-                                             height: "50px",
-                                             width: "50px"
-                                        }} />}                                    
+                                   title = {
+                                        <img 
+                                             src = {`http://localhost:5000${imageInfo.imageUrl}`} 
+                                             style = {{
+                                                  borderRadius: "50%", 
+                                                  height: "50px",
+                                                  width: "50px"
+                                             }}
+                                             alt = "profile"                                                   
+                                        />}                                    
                               >
                                    <NavDropdown.Item as = {Link} to='/protected/dashboard'>
                                         Dashboard
