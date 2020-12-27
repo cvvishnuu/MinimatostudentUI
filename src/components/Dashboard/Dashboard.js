@@ -7,7 +7,7 @@ import Dashboardcards from '../Dashboardcards/Dashboardcards';
 import CanteenCards from '../CanteenCards/CanteenCards'
 import FooterPagePro from '../Footer/Footer';
 import axios from 'axios';
-import CanteenResults from '../CanteenResults/CanteenResults'
+import CanteenResults from '../CanteenResults/CanteenResults';
 
 
 
@@ -67,8 +67,15 @@ class Dashboard extends Component {
                     <div className = "dashboard-container">
                         <Navigation />
                         <SearchBar details = {this.state.canteenDetails} loadSearchResuts = {this.loadSearchResuts}/>
-                    </div> 
-                    <Dashboardcards/>               
+                    </div>
+                   
+                    <Dashboardcards/>    
+                    <div style = {{marginTop: "200px",marginLeft:"4vw"}}>
+                        <h1 className = "collectionHeading">Collections</h1>
+                        <h3 className = "collectionPhrase">    
+                            Explore curated lists of top canteens, cafes in your college.
+                        </h3>
+                    </div>             
                     <CanteenCards canteenDetails = {this.state.canteenDetails}/>
                     <FooterPagePro />   
                 </>     

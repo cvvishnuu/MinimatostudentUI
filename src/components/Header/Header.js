@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -10,16 +10,20 @@ const onLogout = () => {
      localStorage.clear()
  }
 
-const Header = () => {
+const Header = (props) => {
      const userInfo = JSON.parse(localStorage.getItem('User'));
      const imageInfo = JSON.parse(localStorage.getItem('Image'));
+     const [details, setDetails] = useState(props.details);
+     // const [loadSearchResults, setLoadSearchResults] = useState(props.loadSearchResults);
      const { name } = userInfo;
-     // const { b64, mimeType } = imageInfo;
+     console.log(details)
      return (
           <div className = "header-container"  >
               <Navbar expand="sm ">
-                  <Navbar.Brand className = "minimato-title" style={{color: "black", fontSize: "30px"}}>MiniMato</Navbar.Brand>
-                  <Search />
+                    <Navbar.Brand className = "minimato-title" style={{color: "black", fontSize: "30px"}}>
+                         MiniMato
+                    </Navbar.Brand>
+                  <Search {...props} details = {details} />
                   <Navbar.Toggle aria-controls="basic-navbar-nav" /> 
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>

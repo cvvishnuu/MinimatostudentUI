@@ -1,8 +1,8 @@
 import React from 'react';
-import "./SearchBar.css";
 import Autosuggest from 'react-autosuggest';
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
+import "./SearchBar.css";
 
    
   // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -12,13 +12,10 @@ import axios from 'axios';
 class SearchBar  extends React.Component {
   constructor(props) {
       super(props);
-    
-  
       this.state = {
         value: '',
         suggestions: [],
-        searchresults:[],
-        
+        searchresults:[],        
       };
     }
     
@@ -109,47 +106,58 @@ class SearchBar  extends React.Component {
         width: "40vw",  
         borderColor: "blue",
         borderRadius: "7px",
-      },   
+      },  
+
       suggestionsContainer: {
         backgroundColor: "white",
         position: "absolute",
         zIndex:"10",
         borderRadius: "10px",
         borderColor: "blue",
-      },   
+        marginTop: "5px",
+      },  
+
       input: {
           borderColor: "rgb(128, 110, 114)",
           borderRadius: "7px",
           backgroundColor: "white",
           width: "40vw",
           padding: "12px",
-          opacity: "0.5"
-        
+          opacity: "0.5",        
       },
+
       suggestion:{
         borderColor: "blue",
         borderRadius: "7px",
         color: "black",
-       
+        padding: "5px",   
       }
+
+     
+
     };
     return(
       <div className = "container-search">
         <h1 className = "title">MINIMATO</h1>
         <h2 className = "slogan">Discover the best foods and drinks in your college</h2>
-        {/* <div className = "searchbar-container">
+        {
+          /* <div className = "searchbar-container">
             <input style = {{marginBottom: "4vh"}} className = "searchbar" type = "text" placeholder = "   Search..." />
-        </div> */}
+          </div> */
+        }
         <div className = "searchbar-container">
-          <Autosuggest theme={theme}
-            suggestions={suggestions}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            getSuggestionValue={this.getSuggestionValue}
-            renderSuggestion={this.renderSuggestion}
-            inputProps={inputProps}            
-          />
-          <Button onClick = {this.onSearch}> search</Button> 
+          <div style = {{display:"flex"}}>
+            <Autosuggest 
+              theme={theme}
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={this.getSuggestionValue}
+              renderSuggestion={this.renderSuggestion}
+              inputProps={inputProps}            
+            />
+            <Button className = "pl-4 pr-4 ml-2 btn btn-light" onClick = {this.onSearch}> Search</Button> 
+          </div>                    
         </div>
       </div>
     ) 

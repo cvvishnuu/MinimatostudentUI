@@ -10,3 +10,12 @@
     background-position: bottom;  
     opacity:0.9;
 }
+
+.collectionPhrase {
+    font-family: 'Merriweather', serif;
+    color: rgba(0,0,0,0.5)
+}
+
+.collectionHeading {
+    font-family: 'Oswald', sans-serif;
+}

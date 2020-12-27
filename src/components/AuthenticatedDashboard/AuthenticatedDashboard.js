@@ -5,7 +5,7 @@ import Dashboardcards from '../Dashboardcards/Dashboardcards';
 import axios from 'axios';
 import FooterPagePro from '../Footer/Footer';
 import CanteenCards from '../CanteenCards/CanteenCards'
-
+import CanteenResults from '../CanteenResults/CanteenResults'
 
 
 class AuthenticatedDashboard extends Component {
@@ -28,6 +28,7 @@ class AuthenticatedDashboard extends Component {
         const reqOne = axios.get('http://localhost:5000/student/dashboard', {headers: {Authorization: token}})
         const reqTwo = axios.get('http://localhost:5000/student/getCanteenDetails')
         axios.all([reqOne, reqTwo]).then(axios.spread((...responses) => {
+            const { loadDetails } = this.props
             const responseOne = responses[0]
             const responseTwo = responses[1]
             if(responseOne.data.success) {
@@ -46,10 +47,9 @@ class AuthenticatedDashboard extends Component {
                     phoneNumber: this.state.phoneNumber,
                     address: this.state.address,
                     gender: this.state.gender
-                }))
-                
+                }))               
             } else {
-                alert("An error occured Please try again later 11111111");       
+                alert("An error occured Please try again later");       
             }
             if(responseTwo.data.payload.success) {
                 this.setState({ 
@@ -58,6 +58,7 @@ class AuthenticatedDashboard extends Component {
                 localStorage.setItem("canteenDetails", JSON.stringify({
                     canteenDetails: responseTwo.data.payload.canteenDetails
                 }))
+                loadDetails(responseTwo.data.payload.canteenDetails);
             }
         }))
         .catch(err => {
@@ -81,7 +82,7 @@ class AuthenticatedDashboard extends Component {
                         <ProtectedNav name ={this.state.name} onImageLoad = {this.onImageLoad}/>
                         <SearchBar details = {this.state.canteenDetails} loadSearchResuts = {this.loadSearchResuts}/>
                     </div>                        
-                    <CanteenCards canteenDetails = {this.state.searchResults}/>
+                    <CanteenResults canteenDetails = {this.state.searchResults}/>
                     <div>
                         <FooterPagePro />
                     </div>
@@ -93,6 +94,12 @@ class AuthenticatedDashboard extends Component {
                         <SearchBar details = {this.state.canteenDetails} loadSearchResuts = {this.loadSearchResuts}/>
                     </div>    
                     <Dashboardcards/>
+                    <div style = {{marginTop: "200px",marginLeft:"4vw"}}>
+                        <h1 className = "collectionHeading">Collections</h1>
+                        <h3 className = "collectionPhrase">    
+                            Explore curated lists of top canteens, cafes in your college.
+                        </h3>
+                    </div>
                     <CanteenCards canteenDetails = {this.state.canteenDetails}/>
                     <div>
                         <FooterPagePro />
@@ -106,3 +113,6 @@ class AuthenticatedDashboard extends Component {
 }
 
 export default AuthenticatedDashboard;
+
+
+
