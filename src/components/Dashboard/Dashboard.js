@@ -27,6 +27,9 @@ class Dashboard extends Component {
             this.setState({ 
                 canteenDetails:res.data.payload.canteenDetails
             })
+            localStorage.setItem("canteenDetails", JSON.stringify({
+                canteenDetails: res.data.payload.canteenDetails
+            }))    
         })
             this.checkStore();
     }

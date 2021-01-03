@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Modal }  from "react-responsive-modal";
 import EditProfile from '../EditProfile/EditProfile';
@@ -19,28 +19,24 @@ const profilePicHandler = () => {
 
 
 
-const Viewprofile = (props) => {
+const Viewprofile = () => {
     const [open, setOpen] = useState(false);
     const [selectedFile, setSelectedFile] = useState('null');
     const [image, setImage] = useState();
     const [searchResults, setSearchResults] = useState(null);
-    const [details, setDetails] = useState(props.details);
+    const [canteenDetails, setCanteenDetails] = useState([]);
     const userInfo = JSON.parse(localStorage.getItem('User'));
     const { id, name, email, phoneNumber, address, gender } = userInfo;
     const imageInfo = JSON.parse(localStorage.getItem('Image'));
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem('Authorization'))
-        axios.get('http://localhost:5000/student/getImage', {
-            headers : {
-                Authorization: token
-            }
-        })
-        .then(res => {
-            console.log(res.data.payload);        
+        const reqOne = axios.get('http://localhost:5000/student/getImage', {headers: {Authorization: token}});
+        axios.all([reqOne]).then(axios.spread((...responses) => {
+            const responseOne = responses[0]                    
             localStorage.setItem("Image", JSON.stringify({
-                imageUrl: res.data.payload.url               
-            }))
-        })
+                imageUrl: responseOne.data.payload.url               
+            }))        
+        }))
     }, []);
 
     const loadSearchResults = (results) => {
@@ -82,7 +78,7 @@ const Viewprofile = (props) => {
             (searchResults)?
                 <div className = "viewprofile-container">
                     <div>
-                        <Header loadSearchResults = {loadSearchResults} details = {details}/>
+                        <Header loadSearchResults = {loadSearchResults} />
                     </div>            
                     <CanteenResults canteenDetails = {searchResults}/>
                     <FooterPagePro />
@@ -90,7 +86,7 @@ const Viewprofile = (props) => {
             :
                 <div className = "viewprofile-container">
                     <div>
-                        <Header loadSearchResults = {loadSearchResults} details = {details}/>
+                        <Header loadSearchResults = {loadSearchResults} />
                     </div>            
                     <div style = {{display:"flex",justifyContent:"center"}}>
                         <div  style = {{width:"1150px"}} className = "background-picture">
@@ -199,10 +195,7 @@ const Viewprofile = (props) => {
                     </div>
                     <FooterPagePro />
                 </div>
-        }
-        
-        
-            
+            }    
         </>
     );    
 }

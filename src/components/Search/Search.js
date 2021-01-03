@@ -2,7 +2,6 @@ import React from 'react';
 import Autosuggest from 'react-autosuggest';
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
-import CanteenResults from '../CanteenResults/CanteenResults';
 import './Search.css';
 
 class Search extends React.Component {
@@ -18,7 +17,7 @@ class Search extends React.Component {
         event.preventDefault();
         const { value } = this.state
         const { loadSearchResults } = this.props;
-        console.log()
+        // console.log()
         const keyword = value
         if(keyword){
           axios.get('http://localhost:5000/student/searchresults', {

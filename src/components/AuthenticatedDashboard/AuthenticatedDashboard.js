@@ -28,7 +28,6 @@ class AuthenticatedDashboard extends Component {
         const reqOne = axios.get('http://localhost:5000/student/dashboard', {headers: {Authorization: token}})
         const reqTwo = axios.get('http://localhost:5000/student/getCanteenDetails')
         axios.all([reqOne, reqTwo]).then(axios.spread((...responses) => {
-            const { loadDetails } = this.props
             const responseOne = responses[0]
             const responseTwo = responses[1]
             if(responseOne.data.success) {
@@ -57,8 +56,7 @@ class AuthenticatedDashboard extends Component {
                 })
                 localStorage.setItem("canteenDetails", JSON.stringify({
                     canteenDetails: responseTwo.data.payload.canteenDetails
-                }))
-                loadDetails(responseTwo.data.payload.canteenDetails);
+                }))                
             }
         }))
         .catch(err => {

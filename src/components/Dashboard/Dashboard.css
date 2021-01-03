@@ -1,7 +1,7 @@
 
 
 .dashboard-container {
-    background-image: url("./homepage-min.jpg");
+    background-image: url("../Assets/homepage-min.jpg");
     height:75%;
     position:relative;
     border: 1px solid black;

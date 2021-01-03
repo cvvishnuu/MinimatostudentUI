@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 import "antd/dist/antd.css";
 import { Card } from "antd";
@@ -9,14 +9,12 @@ const { Meta } = Card;
 
 const CanteenResults = (props) => { 
     const { canteenDetails } = props;
-
     return ( 
         <div style={{width: "100%",marginTop:"100px", display:"flex", flexWrap: "wrap", justifyContent: 'space-evenly'}}>        
             {
-                canteenDetails.map((item, i)=> {   
-                  
+                canteenDetails.map((item, i)=> {                     
                         return(
-                            <Link to = {`/canteenroute/${item.canteen_id}`}>
+                            <Link to = {{pathname:`/canteenroute/${item.canteen_id}`}} >
                                 <Card
                                     className = "hover"
                                     style = {{

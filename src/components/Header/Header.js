@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -13,10 +13,9 @@ const onLogout = () => {
 const Header = (props) => {
      const userInfo = JSON.parse(localStorage.getItem('User'));
      const imageInfo = JSON.parse(localStorage.getItem('Image'));
-     const [details, setDetails] = useState(props.details);
-     // const [loadSearchResults, setLoadSearchResults] = useState(props.loadSearchResults);
-     const { name } = userInfo;
-     console.log(details)
+     const canteenDetails = JSON.parse(localStorage.getItem('canteenDetails'));
+     const details = canteenDetails.canteenDetails;
+     const { name } = userInfo;      
      return (
           <div className = "header-container"  >
               <Navbar expand="sm ">
@@ -72,7 +71,7 @@ const Header = (props) => {
                     </Nav>
                   </Navbar.Collapse>
                </Navbar> 
-               <hr/>
+               
           </div>
       );   
 }
