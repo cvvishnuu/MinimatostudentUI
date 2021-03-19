@@ -26,9 +26,9 @@ const state = {
   canteenId: null,
   searchResults: null,
   token: null,
-  render: false,
- 
+  render: false, 
 }
+
 class NewComponent extends Component {
     constructor(props) {        
         super(props);
